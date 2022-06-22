@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link,Navigate } from "react-router-dom";
 import {useCookies} from 'react-cookie'
 import { signin } from "./helper/loginapicalls";
 import UserDashboard from "../user/UserDashboard";
@@ -14,6 +14,7 @@ function Login() {
   });
 
   const [token,setToken]=useState('')
+  const [check,setCheck]=useState(0);
   const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
 
   const { username, password, error,didRedirect } = values;
@@ -33,6 +34,9 @@ function Login() {
   //   // }
   // };
 
+  useEffect(()=>{
+
+  },[check])
 
   const onSubmit = event => {
     event.preventDefault();
@@ -41,11 +45,17 @@ function Login() {
       .then(data => {
         // console.log("front...............",data);
         // token.current=data.jwtAuthToken;
+        if(data.error){
+          setCheck(2);
+        }
+        else{
         setToken(data.jwtAuthToken);
         setValues({...values,didRedirect:true})
         setCookie('token',data.jwtAuthToken)
         setCookie('username',data.username)
-        window.location.reload();
+        setCheck(1)
+        }
+        
          
         // if (data.error) {
         //   setValues({ ...values, error: data.error, loading: false });
@@ -81,7 +91,7 @@ function Login() {
   const signInForm = () => {
     return (
       <>
-      {cookies.token=="undefined"?
+      {check==2?
       <>{errorMessage()}</>:<></>}
         <div className="wrap"> 
         <div className="contain"> 
@@ -134,9 +144,10 @@ function Login() {
     {/* {loadingMessage()} */}
       {/* {errorMessage()} */}
       {/* {username} */}
-      {cookies.token!=null&&cookies.token!="undefined"?<>
+      {/* {cookies.token!=null&&cookies.token!="undefined"?<>
       
-      <UserDashboard/></>:signInForm()}
+      <UserDashboard/></>:signInForm()} */}
+      {check==1?<Navigate to="/user/dashboard"/>:<>{signInForm()}</>}
       {/* {performRedirect()} */}
     </div>
   );
