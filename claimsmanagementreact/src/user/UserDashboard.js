@@ -59,7 +59,7 @@ function UserDashboard() {
     <Base
       title="Welcome to User Dashboard"
       description="Manage all of your claims here"
-      className="container bg-success p-4"
+      className="container bg-info p-4"
     >
     <div className="row" style={{marginBottom:'44px',marginTop:'30px'}}>
         <div className="col-3 ml-4">{adminLeftSide()}</div>

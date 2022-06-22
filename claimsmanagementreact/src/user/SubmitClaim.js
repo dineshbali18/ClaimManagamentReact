@@ -135,7 +135,7 @@ const successMessage = () => {
     <Base
       title="Welcome to User Dashboard"
       description="Manage all of your claims here"
-      className="container bg-success p-4"
+      className="container bg-info p-4"
     >
     <Link to="/user/dashboard" className="btn btn-md btn-dark mb-3" style={{fontSize:'20px'}}>
         User Home

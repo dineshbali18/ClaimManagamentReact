@@ -71,7 +71,7 @@ function ClaimStatus() {
         <ul className="list-group">
         <li className="list-group-item">
             <span className="badge badge-success mr-2">Select Claim Id: </span>
-            <select style={{fontSize:'10px'}} onChange={(e)=>{
+            <select style={{fontSize:'15px'}} onChange={(e)=>{
             setClaim(e.target.value)}}
           className="form-control"
           placeholder="claim"
@@ -105,7 +105,7 @@ function ClaimStatus() {
     <Base
       title="Welcome to User Dashboard"
       description="Manage all of your claims here"
-      className="container bg-success p-4"
+      className="container bg-info p-4"
     >
     <div className="row">
         <div className="col-3 ml-4">{adminLeftSide()}</div>
