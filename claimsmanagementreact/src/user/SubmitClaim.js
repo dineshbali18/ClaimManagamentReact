@@ -36,6 +36,15 @@ function UserDashboard() {
         // console.log(data);
         setDescription(data.claimDescription)
         setStatus(data.claimStatus)
+        setClaimData({
+          description:"",
+          remarks:"",
+          claimAmount:"",
+          memberId:cookies.username,
+          hospitalId:"",
+          benefitId:"",
+          policyId:""
+        })
     }).catch(err=>{console.log(err)})
     // setCheck(1)
   }
